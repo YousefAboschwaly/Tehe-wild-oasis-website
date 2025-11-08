@@ -1,4 +1,3 @@
-import Image from "next/image";
 
 export const metadata = {
   title: "Guest area",
@@ -7,12 +6,12 @@ export const metadata = {
 export default function page() {
   return (
     <div className=" bg-blue-200 p-4">
-      <Image
-        src="/next.svg"
+      <img
+        src="/bg.png"
         alt="Next.js logo"
         width={0}
         height={0}
-        className="w-99 h-99"
+        className="w-full "
       />
       <h1>User Account</h1>
     </div>
