@@ -1,4 +1,4 @@
-import './global.css'
+import './_styles/global.css'
 export default function Layout({ children }) {
   return (
     <html lang="en">
