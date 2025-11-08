@@ -1,6 +1,6 @@
 
 export default function page() {
   return (
-    <h1 > Hello Next</h1>
+    <div  >Cabins</div>
   )
 }
