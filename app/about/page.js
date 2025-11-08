@@ -1,6 +1,7 @@
+export const metadata = {
+  title: "About",
+};
 
 export default function page() {
-  return (
-    <h1> About wild Oasis</h1>
-  )
+  return <h1> About wild Oasis</h1>;
 }
