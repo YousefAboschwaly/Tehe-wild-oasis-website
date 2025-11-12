@@ -1,7 +1,11 @@
 import { getCabins } from "../_lib/data-service";
 import CabinCard from "./CabinCard";
 
+// IS to make Component to be Dynamic (no SSG)
+// import {unstable_noStore as noStore} from 'next/cache'
+
 export default async function CabinList() {
+  // noStore()
   console.log("Starting...");
   const cabins = await getCabins();
   console.log(cabins);
