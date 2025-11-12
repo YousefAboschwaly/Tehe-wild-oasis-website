@@ -3,7 +3,8 @@ const nextConfig = {
   /* config options here */
 
  images: {
-    remotePatterns: [
+    
+  remotePatterns: [
       {
         protocol: 'https',
         hostname: 'ersqmuthcoyjqdgtqytk.supabase.co',
@@ -12,7 +13,7 @@ const nextConfig = {
       },
     ],
   },
-  output: 'export',
+  // output: 'export',
 
   reactCompiler: true,
 };
