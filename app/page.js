@@ -7,7 +7,7 @@ export default function page() {
     <main className="mt-24">
       <Image
         src={bg}
-        quality={100}
+        quality={75}
         fill
         placeholder="blur"
         className="object-cover object-center"
