@@ -11,6 +11,7 @@ const nextConfig = {
         port: '',
         pathname: '/storage/v1/object/public/cabin-images/**',
       },
+      new URL('https://lh3.googleusercontent.com/**'),
     ],
   },
   // output: 'export',
