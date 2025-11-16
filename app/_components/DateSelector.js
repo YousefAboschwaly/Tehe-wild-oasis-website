@@ -26,7 +26,7 @@ function DateSelector() {
   const maxBookingLength = 23;
 
   return (
-    <div className="flex-1 flex flex-col justify-between h-full">
+    <div className="flex-1 flex flex-col justify-between ">
       <div className="pt-12">
         <DayPicker
           mode="range"
@@ -40,7 +40,15 @@ function DateSelector() {
           classNames={{
             months: "flex  gap-4",
             month_caption: "ml-4 mb-3",
+            caption_dropdowns: "flex gap-2 text-white ",
+            day: "hover:rounded-full hover:bg-accent-500 hover:text-primary-900 transition-all",
+            // startingDay: "bg-accent-400",
+            // endingDay: "bg-accent-400",
+            // selected: "bg-accent-400 text-primary-900",
+            // range_middle: "bg-accent-300 text-primary-900",
+
           }}
+
         />
       </div>
 
