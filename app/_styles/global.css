@@ -63,3 +63,7 @@
   --rdp-background-color: var(--color-accent-600) !important;
   margin: 0 !important;
 }
+.daypicker-wrapper .rdp-months {
+  display: flex;
+  gap: 1rem; /* مسافة بين التقويمين */
+}

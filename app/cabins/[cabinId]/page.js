@@ -77,9 +77,10 @@ export default async function Page({ params }) {
         </h2>
       </div>
 
-      <div>
-        <DateSelector/>
-        <ReservationForm/>
+      <div className="flex border my-4 border-primary-800 min-h-[400px] items-stretch">
+        {" "}
+        <DateSelector />
+        <ReservationForm />
       </div>
     </div>
   );
