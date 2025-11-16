@@ -27,7 +27,6 @@ function DateSelector({cabin , settings, bookedDates}) {
 
   return (
     <div className="flex-1 flex flex-col justify-between w-full h-full ">
-      <div className="pt-12">
         <DayPicker
           mode="range"
           min={minBookingLength + 1}
@@ -37,19 +36,23 @@ function DateSelector({cabin , settings, bookedDates}) {
           toYear={new Date().getFullYear() + 5}
           captionLayout="dropdown"
           numberOfMonths={2}
+          className="pt-12 place-items-center"
           classNames={{
             months: "flex gap-3  ",
             nav:"hidden",
             today: "bg-accent-500 text-white rounded-full",
-            month_caption: "text-center mb-3",
+            month_caption: " mb-3",
             dropdowns: " flex justify-center gap-4 cursor-pointer ",
             day: "hover:rounded-full hover:bg-accent-400 hover:text-primary-900 transition-all",
             day_button: "h-10 w-10 ",
+            selected: "hover:rounded-none bg-accent-500 text-primary-900",
+            range_start: "rounded-l-full",
+            range_middle: "bg-accent-500 ",
+            range_end: "rounded-r-full",
           
           }}
 
         />
-      </div>
 
       <div className="flex items-center justify-between px-8 bg-accent-500 text-primary-800 h-[72px]">
         <div className="flex items-baseline gap-6">
