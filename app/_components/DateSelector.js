@@ -26,7 +26,7 @@ function DateSelector({cabin , settings, bookedDates}) {
 
 
   return (
-    <div className="flex-1 flex flex-col justify-between ">
+    <div className="flex-1 flex flex-col justify-between w-full h-full ">
       <div className="pt-12">
         <DayPicker
           mode="range"
@@ -38,15 +38,14 @@ function DateSelector({cabin , settings, bookedDates}) {
           captionLayout="dropdown"
           numberOfMonths={2}
           classNames={{
-            months: "flex  gap-4",
-            month_caption: "ml-4 mb-3",
-            caption_dropdowns: "flex gap-2 text-white ",
-            day: "hover:rounded-full hover:bg-accent-500 hover:text-primary-900 transition-all",
-            // startingDay: "bg-accent-400",
-            // endingDay: "bg-accent-400",
-            // selected: "bg-accent-400 text-primary-900",
-            // range_middle: "bg-accent-300 text-primary-900",
-
+            months: "flex gap-3  ",
+            nav:"hidden",
+            today: "bg-accent-500 text-white rounded-full",
+            month_caption: "text-center mb-3",
+            dropdowns: " flex justify-center gap-4 cursor-pointer ",
+            day: "hover:rounded-full hover:bg-accent-400 hover:text-primary-900 transition-all",
+            day_button: "h-10 w-10 ",
+          
           }}
 
         />
