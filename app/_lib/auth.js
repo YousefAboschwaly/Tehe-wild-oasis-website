@@ -10,7 +10,7 @@ export const authConfig = {
     }),
   ],
   callbacks: {
-    authorized({ auth, request }) {
+    authorized({ auth }) {
       return !!auth?.user;
     },
     async signIn({ user }) {
@@ -24,11 +24,11 @@ export const authConfig = {
         return false;
       }
     },
-    async session({session }){
-      const guest = await getGuest(session.user.email)
-      session.user.guestId = guest.id
-      return session
-    }
+    async session({ session }) {
+      const guest = await getGuest(session.user.email);
+      session.user.guestId = guest.id;
+      return session;
+    },
   },
   pages: {
     signIn: "/login",
