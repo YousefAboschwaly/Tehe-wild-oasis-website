@@ -13,7 +13,7 @@ export async function updateGuestProfile(formData) {
     throw new Error("Please provide an valid national ID");
   const updatedData = { nationality, countryFlag, nationalID };
   console.log(updatedData);
-  updateGuest(session.user.guestId, updatedData);
+  await updateGuest(session.user.guestId, updatedData);
   revalidatePath("/account/profile");
 }
 

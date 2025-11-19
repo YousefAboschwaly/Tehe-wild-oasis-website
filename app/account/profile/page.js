@@ -3,16 +3,13 @@ import UpdateProfileForm from "@/app/_components/UpdateProfileForm";
 import { auth } from "@/app/_lib/auth";
 import { getGuest } from "@/app/_lib/data-service";
 
-
-
 export const metadata = {
   title: "Update profile",
-}
+};
 
 export default async function Page() {
-  const session = await auth()
-  const guest = await getGuest(session.user.email) 
-
+  const session = await auth();
+  const guest = await getGuest(session.user.email);
 
   return (
     <div>
@@ -26,12 +23,13 @@ export default async function Page() {
       </p>
 
       <UpdateProfileForm guest={guest}>
-          <SelectCountry
-            name="nationality"
-            id="nationality"
-            className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
-            defaultCountry={guest?.nationality}
-          />
+        <SelectCountry
+          name="nationality"
+          id="nationality"
+          className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
+          defaultCountry={guest.nationality}
+          key={guest.nationality}
+        />
       </UpdateProfileForm>
     </div>
   );
