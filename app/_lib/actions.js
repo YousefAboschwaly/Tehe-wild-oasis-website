@@ -23,7 +23,8 @@ export async function deleteReservation(bookingId) {
   if (!session.user) throw new Error("You must be Logged in");
 
   await deleteBooking(bookingId);
-  
+
+  revalidatePath("/account/reservations")
 }
 export async function SignInAction() {
   return signIn("google", { redirectTo: "/account" });
