@@ -1,23 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useTransition } from "react";
 import { updateGuestProfile } from "../_lib/actions";
+import { useFormStatus } from "react-dom";
 
 export default function UpdateProfileForm({ children, guest }) {
   const { fullName, email, nationalID, countryFlag } = guest;
-  const [isPending, startTransition] = useTransition();
-
-  const handleSubmit = (formData) => {
-    startTransition(async () => {
-      await updateGuestProfile(formData);
-      // After successful submission, the page will revalidate and re-render with fresh data
-    });
-  };
 
   return (
     <form
-      action={handleSubmit}
+      action={updateGuestProfile}
       className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
     >
       <div className="space-y-2">
@@ -66,14 +58,21 @@ export default function UpdateProfileForm({ children, guest }) {
       </div>
 
       <div className="flex justify-end items-center gap-6">
-        <button
-          type="submit"
-          disabled={isPending}
-          className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
-        >
-          {isPending ? "Updating..." : "Update profile"}
-        </button>
+        <Button />
       </div>
     </form>
+  );
+}
+
+function Button() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300"
+      disabled={pending}
+    >
+      {pending ? "Updating..." : "Update profile"}
+    </button>
   );
 }
