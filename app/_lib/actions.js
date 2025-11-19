@@ -1,6 +1,8 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
+import { updateGuest } from "./data-service";
 
 export async function updateGuestProfile(formData) {
   const session = await auth();
@@ -11,6 +13,8 @@ export async function updateGuestProfile(formData) {
     throw new Error("Please provide an valid national ID");
   const updatedData = { nationality, countryFlag, nationalID };
   console.log(updatedData);
+  updateGuest(session.user.guestId, updatedData);
+  revalidatePath("/account/profile");
 }
 
 export async function SignInAction() {

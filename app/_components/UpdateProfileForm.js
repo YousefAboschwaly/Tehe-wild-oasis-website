@@ -4,7 +4,8 @@ import Image from "next/image";
 import { updateGuestProfile } from "../_lib/actions";
 
 export default function UpdateProfileForm({ children, guest }) {
-  const { fullName, email, nationalID, nationality, countryFlag } = guest;
+  const { fullName, email, nationalID, countryFlag } = guest;
+  console.log(guest)
 
   return (
     <form
@@ -34,10 +35,10 @@ export default function UpdateProfileForm({ children, guest }) {
       <div className="space-y-2">
         <div className="flex items-center justify-between">
           <label htmlFor="nationality">Where are you from?</label>
-          <div className="h-5 rounded-sm">
+          <div className="w-8 h-5 rounded-sm relative ">
             <Image
               fill
-              src={countryFlag}
+              src={ countryFlag??  "/placeholder-flag.png"}
               alt="Country flag"
               className="object-cover"
             />
