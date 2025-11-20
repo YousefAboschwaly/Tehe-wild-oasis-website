@@ -32,6 +32,18 @@ export async function deleteReservation(bookingId) {
 
   revalidatePath("/account/reservations");
 }
+export async function updateBooking(formData){
+  const session = await auth();
+  const guestBookings = await getBookings(session.user.guestId);
+  if (!session.user) throw new Error("You must be Logged in");
+
+  const bookingIds = guestBookings.map((booking) => booking.id);
+  if (!session.user) throw new Error("You must be Logged in");
+
+  if (!bookingIds.includes(bookingId))
+    throw new Error("You are not allowed to delete this booking ");
+
+}
 export async function SignInAction() {
   return signIn("google", { redirectTo: "/account" });
 }

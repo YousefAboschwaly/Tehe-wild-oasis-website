@@ -1,12 +1,15 @@
 import { getBooking } from "@/app/_lib/data-service";
 
-export default async function Page({params}) {
-    const {reservationId} = await params
-    const booking= await getBooking(reservationId) 
-    const {numGuests , observations,cabins:{maxCapacity} } = booking
-    console.log(booking)
+export default async function Page({ params }) {
+  const { reservationId } = await params;
+  const booking = await getBooking(reservationId);
+  const {
+    numGuests,
+    observations,
+    cabins: { maxCapacity },
+  } = booking;
+  console.log(booking);
   // CHANGE
-
 
   return (
     <div>
@@ -19,6 +22,7 @@ export default async function Page({params}) {
           <label htmlFor="numGuests">How many guests?</label>
           <select
             name="numGuests"
+            defaultValue={numGuests}
             id="numGuests"
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
             required
@@ -40,9 +44,15 @@ export default async function Page({params}) {
           </label>
           <textarea
             name="observations"
+            defaultValue={observations}
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
           />
         </div>
+        <input
+          name="reservationId"
+          defaultValue={reservationId}
+          type="hidden"
+        />
 
         <div className="flex justify-end items-center gap-6">
           <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
