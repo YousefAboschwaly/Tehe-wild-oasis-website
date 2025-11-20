@@ -6,7 +6,7 @@ import { deleteReservation } from "../_lib/actions"
 import { useConfirmModal, ConfirmModal } from "./ConfirmModal"
 import SpinnerMini from "./SpinnerMini"
 
-function DeleteReservation({ bookingId }) {
+function DeleteReservation({ bookingId , onDelete }) {
   const [isPending, startTransition] = useTransition()
   const { isOpen, dialog, isLoading, confirm, cancel } = useConfirmModal()
 
@@ -18,7 +18,7 @@ function DeleteReservation({ bookingId }) {
       cancelText: "Cancel",
       isDangerous: true,
       onConfirm: () => {
-        startTransition(() => deleteReservation(bookingId))
+        startTransition(() => onDelete(bookingId))
       },
     })
   }
