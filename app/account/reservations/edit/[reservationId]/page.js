@@ -1,3 +1,4 @@
+import { updateReservation } from "@/app/_lib/actions";
 import { getBooking } from "@/app/_lib/data-service";
 
 export default async function Page({ params }) {
@@ -8,8 +9,6 @@ export default async function Page({ params }) {
     observations,
     cabins: { maxCapacity },
   } = booking;
-  console.log(booking);
-  // CHANGE
 
   return (
     <div>
@@ -17,7 +16,10 @@ export default async function Page({ params }) {
         Edit Reservation #{reservationId}
       </h2>
 
-      <form className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col">
+      <form
+        action={updateReservation}
+        className="bg-primary-900 py-8 px-12 text-lg flex gap-6 flex-col"
+      >
         <div className="space-y-2">
           <label htmlFor="numGuests">How many guests?</label>
           <select
@@ -26,6 +28,7 @@ export default async function Page({ params }) {
             id="numGuests"
             className="px-5 py-3 bg-primary-200 text-primary-800 w-full shadow-sm rounded-sm"
             required
+            key={numGuests}
           >
             <option value="" key="">
               Select number of guests...
