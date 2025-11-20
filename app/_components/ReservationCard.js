@@ -25,7 +25,7 @@ function ReservationCard({ booking }) {
 
   return (
     <div className="flex border border-primary-800">
-      <div className="relative w-38 h-32 aspect-square">
+      <div className="relative w-36 h-32 aspect-square">
         <Image
           fill
           src={image}
