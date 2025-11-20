@@ -1,6 +1,6 @@
+import SubmitButton from "@/app/_components/SubmitButton";
 import { updateReservation } from "@/app/_lib/actions";
 import { getBooking } from "@/app/_lib/data-service";
-import { useFormStatus } from "react-dom";
 
 export default async function Page({ params }) {
   const { reservationId } = await params;
@@ -59,10 +59,9 @@ export default async function Page({ params }) {
         />
 
         <div className="flex justify-end items-center gap-6">
-          <Button />
+          <SubmitButton title="Update reservation" />
         </div>
       </form>
     </div>
   );
 }
-

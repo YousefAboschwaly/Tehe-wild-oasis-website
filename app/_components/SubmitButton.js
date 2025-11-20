@@ -1,3 +1,6 @@
+"use client"
+import { useFormStatus } from "react-dom";
+
 export default function SubmitButton({ title, pendingTitle = "Updating..." }) {
   const { pending } = useFormStatus();
   return (
