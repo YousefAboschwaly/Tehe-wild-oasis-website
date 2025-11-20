@@ -46,15 +46,16 @@ export async function updateReservation(formData) {
   const numGuests = formData.get("numGuests");
   const observations = formData.get("observations");
   const reservationId = formData.get("reservationId");
-
   const bookingIds = guestBookings.map((booking) => booking.id);
+
   if (!session.user) throw new Error("You must be Logged in");
   if (!bookingIds.includes(Number(reservationId)))
     throw new Error("You are not allowed to Edit this booking ");
+  
   const updatedData = { numGuests, observations };
   await updateBooking(reservationId, updatedData);
   revalidatePath("/account/reservations");
-  redirect('/account/reservations')
+  redirect("/account/reservations");
 }
 export async function SignInAction() {
   return signIn("google", { redirectTo: "/account" });
