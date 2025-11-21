@@ -46,9 +46,9 @@ function ReservationForm({ cabin, user }) {
       </div>
       <form
         // action={createReservationWithData}
-        action={async(formData) => {
-         await createReservationWithData(formData);
-          resetRange()
+        action={async (formData) => {
+          await createReservationWithData(formData);
+          resetRange();
         }}
         className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col h-full"
       >
@@ -87,11 +87,13 @@ function ReservationForm({ cabin, user }) {
           {" "}
           {/* Added mt-auto to push this to bottom */}
           <div className="flex justify-end items-center gap-6">
-            <p className="text-primary-300 text-base">
-              Start by selecting dates
-            </p>
-
-          <SubmitButton title={"Reserve now"}pendingTitle="Reserving"/>
+            {!startDate && !endDate ? (
+              <p className="text-primary-300 text-base">
+                Start by selecting dates
+              </p>
+            ) : (
+              <SubmitButton title={"Reserve now"} pendingTitle="Reserving..." />
+            )}
           </div>
         </div>
       </form>

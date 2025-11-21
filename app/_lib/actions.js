@@ -43,7 +43,7 @@ export async function createReservation(bookingData, formData) {
   };
   await createBooking(newBooking);
   revalidatePath(`/cabins/${bookingData.cabinId}`);
-
+  redirect("/cabins/thankyou");
 }
 
 export async function deleteReservation(bookingId) {
