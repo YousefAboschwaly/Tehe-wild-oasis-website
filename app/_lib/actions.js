@@ -8,6 +8,7 @@ import {
   getBookings,
   updateBooking,
   updateGuest,
+  createBooking,
 } from "./data-service";
 
 export async function updateGuestProfile(formData) {
@@ -24,27 +25,27 @@ export async function updateGuestProfile(formData) {
   revalidatePath("/account/profile");
 }
 
-export async function createReservation(bookingData,formData){
+export async function createReservation(bookingData, formData) {
   const session = await auth();
   const guestBookings = await getBookings(session.user.guestId);
   if (!session.user) throw new Error("You must be Logged in");
- const {numGuests , observations} =  Object.fromEntries(formData)
- 
+  const { numGuests, observations } = Object.fromEntries(formData);
+
   const newBooking = {
     ...bookingData,
-    guestId:session.user.guestId,
-    numGuests:Number(numGuests),
-    observations:observations.slice(0,1000),
-    extrasPrice:0,
-    totalPrice:bookingData.cabinPrice,
-    status:"unconfrmed",
-    isPaid:false,
-    hasBreakfast:false,
-  }
+    guestId: session.user.guestId,
+    numGuests: Number(numGuests),
+    observations: observations.slice(0, 1000),
+    extrasPrice: 0,
+    totalPrice: bookingData.cabinPrice,
+    status: "unconfrmed",
+    isPaid: false,
+    hasBreakfast: false,
+  };
+  await createBooking(newBooking);
+  console.log(newBooking);
 
-  console.log(newBooking)
 }
-
 
 export async function deleteReservation(bookingId) {
   const session = await auth();
@@ -66,7 +67,7 @@ export async function updateReservation(formData) {
   if (!session.user) throw new Error("You must be Logged in");
 
   const numGuests = formData.get("numGuests");
-  const observations = formData.get("observations").slice(0,1000);
+  const observations = formData.get("observations").slice(0, 1000);
   const reservationId = formData.get("reservationId");
   const bookingIds = guestBookings.map((booking) => booking.id);
 
