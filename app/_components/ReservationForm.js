@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useReservation } from "../_context/ReservationContext";
 import { differenceInDays } from "date-fns";
 import { createReservation } from "../_lib/actions";
+import SubmitButton from "./SubmitButton";
 
 function ReservationForm({ cabin, user }) {
   const { range, resetRange } = useReservation();
@@ -90,9 +91,7 @@ function ReservationForm({ cabin, user }) {
               Start by selecting dates
             </p>
 
-            <button className="bg-accent-500 px-8 py-4 text-primary-800 font-semibold hover:bg-accent-600 transition-all disabled:cursor-not-allowed disabled:bg-gray-500 disabled:text-gray-300">
-              Reserve now
-            </button>
+          <SubmitButton title={"Reserve now"}pendingTitle="Reserving"/>
           </div>
         </div>
       </form>
