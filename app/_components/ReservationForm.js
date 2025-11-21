@@ -1,9 +1,27 @@
+"use client"
 import Image from "next/image";
+import { useReservation } from "../_context/ReservationContext";
+import { differenceInDays } from "date-fns";
+import { createReservation } from "../_lib/actions";
 
 function ReservationForm({ cabin, user }) {
-  // CHANGE
-  const maxCapacity = cabin.maxCapacity;
-  console.log(user);
+  const { range } = useReservation();
+  const { maxCapacity, regularPrice, discount, id } = cabin;
+  const startDate = range.from;
+  const endDate = range.to;
+  const numNights = differenceInDays(endDate, startDate);
+  const cabinPrice = numNights * (regularPrice - discount);
+
+  const bookingData = {
+    startDate,
+    endDate,
+    numNights,
+    cabinPrice,
+    cabinId: id,
+  };
+
+  const createReservationWithData = createReservation.bind(null , bookingData)
+
   return (
     <div className=" scale-[1.01]  flex flex-col  ">
       {" "}
@@ -25,7 +43,7 @@ function ReservationForm({ cabin, user }) {
           <p>{user.name}</p>
         </div>
       </div>
-      <form className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col h-full">
+      <form action={createReservationWithData} className="bg-primary-900 py-10 px-16 text-lg flex gap-5 flex-col h-full">
         {" "}
         {/* Added flex-1 and h-full here */}
         <div className="space-y-4">

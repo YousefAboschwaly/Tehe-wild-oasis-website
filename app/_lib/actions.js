@@ -24,6 +24,12 @@ export async function updateGuestProfile(formData) {
   revalidatePath("/account/profile");
 }
 
+export async function createReservation(bookingData,formData){
+  console.log(formData)
+  console.log(bookingData)
+}
+
+
 export async function deleteReservation(bookingId) {
   const session = await auth();
   const guestBookings = await getBookings(session.user.guestId);
