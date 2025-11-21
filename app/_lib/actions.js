@@ -27,7 +27,6 @@ export async function updateGuestProfile(formData) {
 
 export async function createReservation(bookingData, formData) {
   const session = await auth();
-  const guestBookings = await getBookings(session.user.guestId);
   if (!session.user) throw new Error("You must be Logged in");
   const { numGuests, observations } = Object.fromEntries(formData);
 
@@ -43,7 +42,7 @@ export async function createReservation(bookingData, formData) {
     hasBreakfast: false,
   };
   await createBooking(newBooking);
-  console.log(newBooking);
+  revalidatePath(`/cabins/${bookingData.cabinId}`);
 
 }
 
